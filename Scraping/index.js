@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const { mainSelect, scrapeData } = require("./scraper/scraper");
 
 
-const disease = "fever";
+const disease = "cough";
 const URL = `https://www.healthline.com/search?q1=${disease}`;
 
 async function browserInit() {
