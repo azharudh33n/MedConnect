@@ -17,10 +17,14 @@ const csvwriter = createCsvWriter({
 });
 
 async function mainSelect(page, disease) {
+
+  // Waits for the element to load
   console.log("Searching Initiated");
   await page.waitForSelector(
     "div.gsc-result:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"
   );
+
+  // Clicks on the element
   await page.click(
     "div.gsc-result:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"
   );
@@ -28,7 +32,8 @@ async function mainSelect(page, disease) {
   // await page.waitForSelector(
   //   "#__next > div.css-stl7tm > div > div > div:nth-child(3) > article > div:nth-child(3) > ul:nth-child(5)"
   // );
-
+  
+  //Search for the particular disease to get particular selector
   if (disease === "cough" || disease === "fever") {
     await page.waitForSelector(
       "#__next > div.css-stl7tm > div > div > div:nth-child(3) > article > div:nth-child(3) > ul:nth-child(5)"
@@ -74,8 +79,10 @@ async function mainSelect(page, disease) {
   }
 }
 
+
+//Scraping Module
 async function scrapeData(page, disease, selector) {
-  console.log(selector);
+  // console.log(selector);
   const cselect = selector;
   const Data = await page.evaluate((cselect) => {
     const list = document.querySelector(cselect);
