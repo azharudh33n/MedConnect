@@ -19,7 +19,6 @@ async function browserInit() {
   const page = await browser.newPage();
   await page.goto(URL);
   await mainSelect(page);
-  await scrapeData(page, disease);
 }
 
 browserInit();
